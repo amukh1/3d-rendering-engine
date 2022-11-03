@@ -2,7 +2,7 @@ const p5 = require('node-p5');
 const {cube} = require('./renderer.js')
 
 
-let c = new cube(100, 5, {x:(200),y:(200)})
+let c = new cube(100, 5, {x:(200),y:(200), wireframe: true})
 
 function sketch(p) {
     p.setup = () => {
