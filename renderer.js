@@ -37,6 +37,15 @@ class cube {
     [4,5],
     [5,6]
   ]  
+
+  this.faces = [
+    [1,2,6,5, 'pink'],
+    [2,3,7,6, 'yellow'],
+    [0,1,2,3, 'red'], // 4 verticies and how much shadow should be on it
+    [0,3,7,4, 'green'],
+    [0,1,5,4, 'blue'],
+  ]
+
       this.points = []
       this.theta = 6
   }
@@ -55,15 +64,25 @@ class cube {
     //   rotate3D(vert, this.theta)
     let [w,h] = [this.pos.x, this.pos.y]
       this.points.push([project(x+w,z), project(y+h,z)])
-        p5.stroke(255)
-      p5.point([project(x + w,z), project(y + h,z)])
+      //   p5.stroke(255)
+      // p5.point([project(x + w,z), project(y + h,z)])
       // line(0, 0, project((x) + 150,z), project((y) + 150,z));
     })
     
-    this.edges.forEach((edge, i)=> {
-      // stroke(225)
-      p5.line(this.points[edge[0]][0], this.points[edge[0]][1], this.points[edge[1]][0], this.points[edge[1]][1])
+    // this.edges.forEach((edge, i)=> {
+    //   // stroke(225)
+    //   p5.line(this.points[edge[0]][0], this.points[edge[0]][1], this.points[edge[1]][0], this.points[edge[1]][1])
+    // })
+
+    this.faces.forEach((face, i)=> {
+      // console.log(i)
+      p5.fill(255 / 4 * i)
+      // p5.square(this.points[face[0]][0], this.points[face[0]][1], this.points[face[1]][0] - this.points[face[0]][0])
+      // p5.square(Math.random() * 100, Math.random() * 100, 100)
+      // use p5.quad instead of p5.square
+      p5.quad(this.points[face[0]][0], this.points[face[0]][1], this.points[face[1]][0], this.points[face[1]][1], this.points[face[2]][0], this.points[face[2]][1], this.points[face[3]][0], this.points[face[3]][1])
     })
+
     }
   }
 
